@@ -1,0 +1,11 @@
+#header{
+    color:white;
+    display: flex;
+    justify-content: center;
+    background-color:cornflowerblue;
+}
+
+button.form-control{
+    background-color: cornflowerblue;
+    color: white;
+}
