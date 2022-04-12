@@ -1,8 +1,9 @@
+// Declare global variables
 var button = document.getElementById("button")
 var form = document.querySelector(form)
 var city= JSON.stringify(document.getElementById("input").value)
 var key="a7e97ca14eb00aee24f5e5ef8502534a"
-
+// Create buttons for search history
 function showInput(event){
     var city= document.getElementById("input").value;
     event.preventDefault();
@@ -14,10 +15,10 @@ function showInput(event){
     
     
 }
-
+// Created fetch function to get weather data on city being entered
 function getAPI(){
     var city= document.getElementById("input").value;
-    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=a7e97ca14eb00aee24f5e5ef8502534a"
+    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=a7e97ca14eb00aee24f5e5ef8502534a&units=imperial"
     fetch(apiURL,{
         method:'Get',
         credentials: 'same-origin',
@@ -31,5 +32,5 @@ function getAPI(){
             console.log(data);
         })
 }
-button.addEventListener("click", showInput)
-button.addEventListener("click", getAPI)
+button.addEventListener("click", showInput);
+button.addEventListener("click", getAPI);
