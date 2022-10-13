@@ -86,6 +86,24 @@ body{
   justify-content: center;
 }
 
+.future-forecast .today{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.future-forecast .today .day{
+  padding: 5px 15px;
+  background: #3c3c44;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.future-forecast .today .temp{
+  font-size: 18px;
+  padding-top: 15px;
+}
+
 .future-forecast .weather-forecast{
   display:flex;
 }
