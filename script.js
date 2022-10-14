@@ -7,7 +7,10 @@ const weatherForecastEl = document.getElementById('weather-forecast');
 const currentTempEl = document.getElementById('current-temp');
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+const API_KEY = 'a7e97ca14eb00aee24f5e5ef8502534a'
+
 
 setInterval(() => {
   const time = new Date();
@@ -25,3 +28,22 @@ setInterval(() => {
   dateEl.innerHTML = days[day] + ', ' + months[month] + ' ' + date
 
 }, 1000);
+
+getWeatherData()
+function getWeatherData() {
+  navigator.geolocation.getCurrentPosition((success) => {
+    console.log(success)
+
+    let { latitude, longitude } = success.coords;
+
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=imperial&appid=${API_KEY}`).then(res => res.json()).then(data => {
+      console.log(data)
+      showWeatherData(data);
+    })
+
+  })
+}
+
+function showWeatherData(data) {
+  let { humidity, pressure, sunrise, sunset, windspeed } = data.current
+}
