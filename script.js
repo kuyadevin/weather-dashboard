@@ -69,4 +69,22 @@ function showWeatherData(data) {
     <div>${window.moment(sunset * 1000).format('h:mm a')}</div>
   </div>`;
 
+  let otherDayForecast = ''
+  data.daily.forEach((day, index) => {
+    if (index == 0) {
+
+    } else {
+      otherDayForecast += `
+      <div class="weather-forecast-item">
+        <div class="day">${window.moment(day.dt * 1000).format('ddd')}</div>
+        <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather w-icon" class="w-icon">
+        <div class="temp">Night - ${day.temp.night}&#176; F</div>
+        <div class="temp">Day - ${day.temp.day}&#176; F</div>
+      </div>`
+
+    }
+  })
+
+  weatherForecastEl.innerHTML = otherDayForecast
+
 }
